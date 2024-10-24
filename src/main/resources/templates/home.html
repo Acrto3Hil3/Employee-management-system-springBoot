@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+
+<!-- Linking Your CSS File -->
+<link rel="stylesheet" href="style.css" />
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+function searchByName(){
+	document.frm.action="/ems/searchByName"
+	document.frm.submit()
+}	
+function searchByAddress(){
+	document.frm.action="/ems/searchByAddress"
+	document.frm.submit()
+}	
+function searchBySalary(){
+	document.frm.action="/ems/searchBySalary"
+	document.frm.submit()
+}	
+</script>
+</head>
+<body>
+	<h1 class="text-center">Employee Management System</h1>
+	<table  class="table align-middle mb-0 bg-white">
+		<thead class="bg-light">
+
+			<tr>
+				<td colspan="7">
+					<table width="100%">
+						<tr class="d-flex justify-content-between">
+							<td class="btn btn-success" align="left"><a
+								th:href="@{/addEmp}">Add Employee</a></td>
+							<td class="btn btn-success" align="right"><a
+								th:href="@{/signup}">Add User</a></td>
+							<td class="btn btn-success" align="right"><a
+								th:href="@{/users}">List of Users</a></td>
+							<td class="btn btn-success" align="right"><a
+								th:href="@{/logout}">Sign-out</a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="7">
+					<form method="post" name="frm">
+						<table>
+							<tr class="d-flex justify-content-between">
+								<td>
+									<div class="input-group">
+										<div class="form-outline" data-mdb-input-init>
+											<input name="empName" type="search" placeholder="Name"
+												class="form-control" />
+										</div>
+										<div>
+											<button type="button" onclick="searchByName()" class="btn btn-primary"
+												data-mdb-ripple-init>
+												<i class="fas fa-search"></i>
+											</button>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="input-group">
+										<div class="form-outline" data-mdb-input-init>
+											<input name="empAddress" type="search" placeholder="Address"
+												class="form-control" />
+										</div>
+										<div>
+											<button type="button" onclick="searchByAddress()" class="btn btn-primary"
+												data-mdb-ripple-init>
+												<i class="fas fa-search"></i>
+											</button>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="input-group">
+										<div class="form-outline" data-mdb-input-init>
+											<input name="empSalary" type="search" placeholder="Salary"
+												class="form-control" />
+										</div>
+										<div>
+											<button type="button" onclick="searchBySalary()" class="btn btn-primary"
+												data-mdb-ripple-init>
+												<i class="fas fa-search"></i>
+											</button>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Gender</th>
+				<th>Department</th>
+				<th>Salary</th>
+				<th>Modify</th>
+				<th>Remove</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr th:if="${empKey.size()==0}">
+		<td colspan="7" align="left">No Employees Found!! Please add some first </td>
+		</tr>
+		<tr th:each="empObj:${empKey}">
+			<td th:text="${empObj.name}"></td>
+			<td th:text="${empObj.address}"></td>
+			<td th:text="${empObj.gender}"></td>
+			<td th:text="${empObj.department}"></td>
+			<td th:text="${empObj.salary}"></td>
+			<td><a th:href="@{/editEmp/{id}(id=${empObj.id})}"> <button class="btn btn-outline-warning bi bi-pencil-fill">Edit</button> </a> </td>
+			<td><a th:href="@{/deleteEmp/{id}(id=${empObj.id})}"> <button class="btn btn-outline-danger bi bi-trash-fill">Delete</button> </a> </td>
+		</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

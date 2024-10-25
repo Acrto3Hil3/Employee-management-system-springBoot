@@ -12,7 +12,7 @@
 	<artifactId>springboot_all_concept_emp_oct22</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>springboot_all_concept_emp_oct22</name>
+	<name>EMS</name>
 	<description>spring boot emplooye complte with all concept</description>
 	<url/>
 	<licenses>
@@ -74,6 +74,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

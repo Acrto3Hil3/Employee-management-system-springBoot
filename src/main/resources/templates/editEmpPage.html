@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>ADD USER</title>
+<title>Edit</title>
 <!-- Css Style -->
 <style type="text/css">
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -36,7 +36,7 @@ top: 13px;
 	crossorigin="anonymous"></script>
 </head>
 <body>
-<form th:action="@{/register}" th:object="${ownUser}" method="post" >
+<form th:action="@{/updateEmp}" th:object="${employee}" method="post" >
 <section class="h-100 bg-dark ">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -44,37 +44,66 @@ top: 13px;
         <div class="card card-registration my-4">
           <div class="row g-0">
             <div class="col-xl-6 d-none d-xl-block">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+              <img src="https://img.freepik.com/premium-vector/picture-people-circle-with-word-word-it_1013341-257641.jpg?w=740"
                 alt="Sample photo" class="img-fluid"
                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
             </div>
             <div class="col-xl-6 f">
               <div class="card-body p-md-5 text-black">
-                <h3 class=" mb-5 text-uppercase"> New User registration form</h3>
+                <h3 class=" mb-5 text-uppercase">  Updation form</h3>
+
                 <div class="row">
-                  <div class="col-md mb-4">
-                    <div data-mdb-input-init class="form-outline ">
-                      <input th:field="{username}" type="text" class="form-control form-control-lg" />
-                      <label class="form-label" >UserName</label>
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input th:field="{name}" type="text" class="form-control form-control-lg" />
+                      <label class="form-label" >Name</label>
                     </div>
                   </div>
-                </div>            
+                </div>
+
+               
+
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input th:field="*{password}" type="text"  class="form-control form-control-lg" />
-                  <label class="form-label">Password</label>
+                  <input th:field="*{address}" type="text"  class="form-control form-control-lg" />
+                  <label class="form-label">Address</label>
+                </div>
+
+                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">Gender: </h6>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input th:field="*{female}" class="form-check-input" type="radio" name="inlineRadioOptions"
+                      value="option1" />
+                    <label class="form-check-label" >Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input th:field="*{male}" class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                      value="option2" />
+                    <label class="form-check-label" >Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" 
+                      value="option3" />
+                    <label class="form-check-label" >Other</label>
+                  </div>
+
                 </div>
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input th:field="*{email}" type="email" class="form-control form-control-lg" />
-                  <label class="form-label" >Email</label>
+                  <input th:field="*{department}" type="text" class="form-control form-control-lg" />
+                  <label class="form-label" >Department</label>
                 </div>
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input th:field="*{role}"  type="text" class="form-control form-control-lg" />
-                  <label class="form-label" >Role</label>
-                 </div>
+                  <input th:field="*{salary}"  type="text" class="form-control form-control-lg" />
+                  <label class="form-label" >Salary</label>
+                </div>
                <div class="d-flex justify-content-end pt-3">
-                  <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-lg ms-2">Update</button>
                  <a th:href="@{/home}"> <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg">Cancel</button> </a>
                 </div>
+
               </div>
             </div>
           </div>

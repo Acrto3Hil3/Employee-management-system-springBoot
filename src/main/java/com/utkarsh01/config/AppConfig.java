@@ -37,9 +37,10 @@ public class AppConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(request->request.disable())
 		.authorizeHttpRequests((authorize)->{
-			authorize.requestMatchers("register").permitAll();
+			authorize.requestMatchers("/signUp","/register").permitAll();
 			authorize.anyRequest().authenticated();})
-		.formLogin(form->form.loginPage("/login").permitAll());
+//		.formLogin(form->form.loginPage("/login").permitAll());
+		.formLogin(Customizer.withDefaults());
 	return	http.build();
 	}
 	

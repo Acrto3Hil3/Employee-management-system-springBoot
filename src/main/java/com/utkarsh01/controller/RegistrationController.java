@@ -21,7 +21,7 @@ public class RegistrationController {
 	@Autowired
 	private PasswordEncoder encoder;
 	
-	@GetMapping("/signup")
+	@GetMapping("/signUp")
 	public String signUp(Model model) {
 		model.addAttribute(new OwnUser());
 		return "registrationPage";

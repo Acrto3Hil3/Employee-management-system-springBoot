@@ -39,8 +39,7 @@ public class AppConfig {
 		.authorizeHttpRequests((authorize)->{
 			authorize.requestMatchers("/signUp","/register").permitAll();
 			authorize.anyRequest().authenticated();})
-//		.formLogin(form->form.loginPage("/login").permitAll());
-		.formLogin(Customizer.withDefaults());
+		.formLogin(form->form.loginPage("/login").permitAll());
 	return	http.build();
 	}
 	

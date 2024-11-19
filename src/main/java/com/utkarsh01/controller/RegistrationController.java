@@ -22,21 +22,22 @@ public class RegistrationController {
 	private PasswordEncoder encoder;
 	
 	@GetMapping("/signUp")
-	public String signUp(Model model) {
-		model.addAttribute(new OwnUser());
+	public String signUp(OwnUser ownUser ,Model model) {
+		model.addAttribute(ownUser);
 		return "registrationPage";
 	}
 	
-	@GetMapping("/users")
-	public String userDisplay(Model model) {
-		model.addAttribute("userKey", repository.findAll());
-		return "userPage";
-	}
 	
 	@PostMapping("/register")
 	public String register(@ModelAttribute OwnUser ownUser) {
 		ownUser.setPassword(encoder.encode(ownUser.getPassword()));
 		repository.save(ownUser);
 		return "successPage";
+	}
+	
+	@GetMapping("/users")
+	public String userDisplay(Model model) {
+		model.addAttribute("userKey", repository.findAll());
+		return "userPage";
 	}
 }

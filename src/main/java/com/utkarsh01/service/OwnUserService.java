@@ -17,8 +17,8 @@ public class OwnUserService implements UserDetailsService {
 	private OwnUserRepository repository;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<OwnUser> opt= repository.findByEmail(username);
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Optional<OwnUser> opt= repository.findByEmail(email);
 		if(opt.isPresent())
 			return opt.get();
 		throw new UsernameNotFoundException("THis name User doesn't exist in database");

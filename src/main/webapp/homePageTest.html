@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function searchByName() {
+		document.frm.action = "/ems/searchByName";
+		document.frm.submit();
+	}
+	function searchByAddress() {
+		document.frm.action = "/ems/searchByAddress";
+		document.frm.submit();
+	}
+	function searchBySalary() {
+		document.frm.action = "/ems/searchBySalary";
+		document.frm.submit();
+	}
+</script>
+
+</head>
+<body>
+	<h2>Hello page</h2>
+
+	<table>
+		<tr>
+			<td colspan="6">
+				<table width="100%">
+					<tr>
+						<td align="left"><a th:href="@{/addEmp}">Add Employee</a></td>
+						<td align="right"><a th:href="@{/signup}">Add User</a></td>
+						<td align="right"><a th:href="@{/users}">List of Users</a></td>
+						<td align="right"><a th:href="@{/logout}">Sign-out</a></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		<tr>
+			<th>Name</th>
+			<th>Address</th>
+			<th>Gender</th>
+			<th>Department</th>
+			<th>Salary</th>
+			<th>Modify</th>
+			<th>Remove</th>
+		</tr>
+		<tr th:if="${empKey.size()==0}">
+			<td colspan="7" align="left">No Employees Found!! Please add
+				some first</td>
+		</tr>
+
+		<tr th:each="empObj:${empKey}">
+			<td th:text="${empObj.name}"></td>
+			<td th:text="${empObj.address}"></td>
+			<td th:text="${empObj.gender}"></td>
+			<td th:text="${empObj.department}"></td>
+			<td th:text="${empObj.salary}"></td>
+			<td><a th:href="@{/editEmp/{id}(id=${empObj.id})}">
+					<button>Edit</button>
+			</a></td>
+			<td><a th:href="@{/deleteEmp/{id}(id=${empObj.id})}">
+					<button>Delete</button>
+			</a></td>
+		</tr>
+	</table>
+</body>
+</html>

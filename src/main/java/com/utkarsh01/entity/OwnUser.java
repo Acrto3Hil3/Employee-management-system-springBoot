@@ -29,7 +29,7 @@ public class OwnUser implements UserDetails{
 	private Integer id;
 	
 	@NotEmpty
-	private String username;
+	private String userName;
 	
 	@NotEmpty
 	private String password;
@@ -42,7 +42,12 @@ public class OwnUser implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority(role));
+		return List.of(new SimpleGrantedAuthority("ROLE_"+role));
 		
+	}
+
+	@Override
+	public String getUsername() {
+		return email;
 	}
 }

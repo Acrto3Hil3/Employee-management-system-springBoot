@@ -18,36 +18,37 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity @Data
+@Entity
+@Data
 @Table(name = "ems_user")
-@AllArgsConstructor 
+@AllArgsConstructor
 @NoArgsConstructor
-public class OwnUser implements UserDetails{
-	
+public class OwnUser implements UserDetails {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@NotEmpty
-	private String userName;
-	
+	private String username;
+
 	@NotEmpty
 	private String password;
-	
+
 	@Email
 	private String email;
-	
+
 	@NotEmpty
 	private String role;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority("ROLE_"+role));
-		
+		return List.of(new SimpleGrantedAuthority("ROLE_" + role));
 	}
-
-	@Override
+	
 	public String getUsername() {
 		return email;
 	}
+	
 }

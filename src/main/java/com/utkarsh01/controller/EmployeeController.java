@@ -20,6 +20,7 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService service;
+	
 	@Autowired
 	private PasswordEncoder encoder;
 
@@ -32,7 +33,7 @@ public class EmployeeController {
 	@GetMapping("/addEmp")
 	public String addEmployee(Model model) {
 		model.addAttribute(new Employee());
-		return "addPage";
+		return "addEmpPage";
 	}
 
 	@PostMapping("/saveEmp")

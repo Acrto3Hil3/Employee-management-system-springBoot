@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>ADD</title>
+<title>ADD EMP</title>
 <!-- Css Style -->
 <style type="text/css">
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -55,9 +55,9 @@ top: 13px;
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      <input th:field="{name}" type="text" class="form-control form-control-lg" />
+                      <input th:field="*{name}" type="text" class="form-control form-control-lg" />
                       <label class="form-label" >Name</label>
-                      <label th:if="${#field.hasErrors('name')}" th:errors="*{name}"></label>
+                      <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
                     </div>
                   </div>
                 </div>
@@ -67,43 +67,40 @@ top: 13px;
                 <div data-mdb-input-init class="form-outline mb-4">
                   <input th:field="*{address}" type="text"  class="form-control form-control-lg" />
                   <label class="form-label">Address</label>
-                  <label th:if="${#field.hasErrors('address)}" th:errors="*{address}"></label>
+                  <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></label>
                 </div>
 
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+		  <h6 class="mb-0 me-4">Gender: </h6>
+		
+		  <div class="form-check form-check-inline mb-0 me-4">
+		    <input th:field="*{gender}" class="form-check-input" type="radio" value="Female" />
+		    <label class="form-check-label">Female</label>
+		  </div>
+		
+		  <div class="form-check form-check-inline mb-0 me-4">
+		    <input th:field="*{gender}" class="form-check-input" type="radio" value="Male" />
+		    <label class="form-check-label">Male</label>
+		  </div>
+		
+		  <div class="form-check form-check-inline mb-0">
+		    <input th:field="*{gender}" class="form-check-input" type="radio" value="Other" />
+		    <label class="form-check-label">Other</label>
+		  </div>
 
-                  <h6 class="mb-0 me-4">Gender: </h6>
-
-                  <div class="form-check form-check-inline mb-0 me-4">
-                    <input th:field="*{female}" class="form-check-input" type="radio" name="inlineRadioOptions"
-                      value="option1" />
-                    <label class="form-check-label" >Female</label>
-                     <label th:if="${#field.hasErrors('female')}" th:errors="*{female}"></label>
-                  </div>
-
-                  <div class="form-check form-check-inline mb-0 me-4">
-                    <input th:field="*{male}" class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                      value="option2" />
-                    <label class="form-check-label" >Male</label>
-                    <label th:if="${#field.hasErrors('male')}" th:errors="*{male}"></label>
-                  </div>
-
-                  <div class="form-check form-check-inline mb-0">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" 
-                      value="option3" />
-                    <label class="form-check-label" >Other</label>
-                  </div>
-
-                </div>
+  <label th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></label>
+</div>
+                
+                
                 <div data-mdb-input-init class="form-outline mb-4">
                   <input th:field="*{department}" type="text" class="form-control form-control-lg" />
                   <label class="form-label" >Department</label>
-                  <label th:if="${#field.hasErrors('department')}" th:errors="*{department}"></label>
+                  <label th:if="${#fields.hasErrors('department')}" th:errors="*{department}"></label>
                 </div>
                 <div data-mdb-input-init class="form-outline mb-4">
                   <input th:field="*{salary}"  type="text" class="form-control form-control-lg" />
                   <label class="form-label" >Salary</label>
-                  <label th:if="${#field.hasErrors('salary')}" th:errors="*{salary}"></label>
+                  <label th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></label>
                 </div>
                <div class="d-flex justify-content-end pt-3">
                   <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-lg ms-2">Submit form</button>

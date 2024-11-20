@@ -37,10 +37,14 @@ public class AppConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(request->request.disable())
 		.authorizeHttpRequests((authorize)->{
-			authorize.requestMatchers("/signUp","/register").permitAll();
+			authorize.requestMatchers("/signUp","/register","/home").permitAll();
 			authorize.anyRequest().authenticated();})
-		.formLogin(form->form.loginPage("/login").permitAll());
-	return	http.build();
+		.formLogin(form -> form
+	            .loginPage("/login")
+	            .permitAll()
+	            .defaultSuccessUrl("/home", true) // Redirect to /home after login
+	            .failureUrl("/login?error=true")); // Redirect back to login on failure
+	    return http.build();
 	}
 	
 }

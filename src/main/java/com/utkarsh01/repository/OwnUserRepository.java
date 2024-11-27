@@ -11,4 +11,5 @@ public interface OwnUserRepository extends JpaRepository<OwnUser, Integer> {
 	// username is email
 	Optional<OwnUser> findByEmail(String email);
 	
+	
 }

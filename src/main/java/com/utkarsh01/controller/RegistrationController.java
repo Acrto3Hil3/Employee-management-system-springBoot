@@ -34,10 +34,4 @@ public class RegistrationController {
 		repository.save(ownUser);
 		return "successPage";
 	}
-	
-	@GetMapping("/users")
-	public String userDisplay(Model model) {
-		model.addAttribute("userKey", repository.findAll());
-		return "userPage";
-	}
 }

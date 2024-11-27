@@ -15,7 +15,9 @@ import com.utkarsh01.repository.OwnUserRepository;
 public class OwnUserService implements UserDetailsService {
 	@Autowired
 	private OwnUserRepository repository;
-
+	
+	
+	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Optional<OwnUser> opt= repository.findByEmail(email);
@@ -23,4 +25,6 @@ public class OwnUserService implements UserDetailsService {
 			return opt.get();
 		throw new UsernameNotFoundException("THis name User doesn't exist in database");
 	}
+	
+	
 }

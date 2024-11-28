@@ -27,8 +27,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/addUser")
-	public String signUp(Model model) {
-	    model.addAttribute("ownUser", new OwnUser());
+	public String signUp(Model model,OwnUser ownUser) {
+	    model.addAttribute("ownUser", ownUser);
 	    return "addUserPage";
 	}
 
@@ -37,12 +37,11 @@ public class UserController {
 	    ownUser.setPassword(encoder.encode(ownUser.getPassword()));
 	    repository.save(ownUser);
 
-	    // Add success message to the model
-	    model.addAttribute("successMessage", "Registration completed successfully! Redirecting to the Home page shortly.");
+//	    // Add success message to the model
+//	    model.addAttribute("successMessage", "Registration completed successfully! Redirecting to the Home page shortly.");
 	    
-	    // Prepare an empty form for redisplay
-	    model.addAttribute("ownUser", new OwnUser());
-	    return "addUserPage";
+//	model.addAttribute("ownuser",new OwnUser());
+	return "redirect:/home";
 	}
 
 

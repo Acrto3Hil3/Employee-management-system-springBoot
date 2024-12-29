@@ -17,19 +17,19 @@ public class SearchController {
 	private EmployeeService service;
 	
 	@PostMapping("/searchByName")
-	public String searchByName(@RequestParam("name") String name,Model model) {
+	public String searchByName(@RequestParam("empName") String name,Model model) {
 		model.addAttribute("empKey", service.searchEmpbyName(name));
 		return "home";
 	}
 	
 	@PostMapping("/searchByAddress")
-	public String searchByAddress(@RequestParam("address") String address, Model model) {
+	public String searchByAddress(@RequestParam("empAddress") String address, Model model) {
 		model.addAttribute("empKey",service.searchEmpByAddress(address));
 		return "home";
 	}
 	
 	@PostMapping("/searchBySalary")
-	public String searchBySalary(@RequestParam("salary") Double salary,Model model) {
+	public String searchBySalary(@RequestParam("empSalary") Double salary,Model model) {
 		if(salary.intValue()==0)
 			return "redirect/home";
 	List<Employee> empSal=	service.searchEmpySal(salary);

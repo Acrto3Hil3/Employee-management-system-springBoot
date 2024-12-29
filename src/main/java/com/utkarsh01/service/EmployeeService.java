@@ -39,11 +39,11 @@ public class EmployeeService {
 	}
 	
 	public List<Employee> searchEmpbyName(String name){
-		return repository.findByNameLike(name);
+		return repository.findByNameLike(name+"%");
 	}
 	
 	public List<Employee> searchEmpByAddress(String address){
-		return repository.findByAddressLike(address);
+		return repository.findByAddressLike(address+"%");
 	}
 	
 	public List<Employee> searchEmpySal(Double salary){
